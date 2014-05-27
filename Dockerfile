@@ -3,10 +3,10 @@
 #
 # https://github.com/dockerfile/elasticsearch
 #
- 
+
 # Pull base image.
 FROM dockerfile/java
- 
+
 # Install ElasticSearch.
 RUN \
   cd /tmp && \
@@ -14,6 +14,9 @@ RUN \
   tar xvzf elasticsearch-1.1.1.tar.gz && \
   rm -f elasticsearch-1.1.1.tar.gz && \
   mv /tmp/elasticsearch-1.1.1 /elasticsearch
+
+RUN /elasticsearch/bin/plugin -install elasticsearch/elasticsearch-analysis-kuromoji/2.1.0
+ADD elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 
 # Define mountable directories.
 VOLUME ["/data"]
