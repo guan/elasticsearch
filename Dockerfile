@@ -16,6 +16,8 @@ RUN \
   mv /tmp/elasticsearch-1.1.1 /elasticsearch
 
 RUN /elasticsearch/bin/plugin -install elasticsearch/elasticsearch-analysis-kuromoji/2.1.0
+RUN /elasticsearch/bin/plugin -install royrusso/elasticsearch-HQ
+
 ADD elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 
 # Define mountable directories.
